@@ -1,0 +1,6 @@
+@mixin flex ($direction, $typewrap,$justifcontent,$alignitems){
+    display:flex;
+    flex-flow: $direction $typewrap;
+    justify-content:$justifcontent;
+    align-items:$alignitems;
+}

@@ -1,0 +1,492 @@
+/* Si quieres usar tu reset, borra esta línea */
+@import '_reset';
+@import '_mixins';
+@import '_flex';
+
+body{
+    height: 100vh;
+}
+
+//HEADER//
+
+.Header{
+    background-color: green;
+    
+    &__logo{
+        background-color: aquamarine;
+        width: 20%;
+    }
+
+    &__wrapper{
+        background-color: orange;
+        max-width: 1440px;
+        margin: auto;
+        @include flex(row, wrap, space-between,center);     
+    }
+    &__icono{
+        width: 5%;
+        background-color: aqua;
+        display:none;
+        @include medium{
+            display: block;
+        }
+        @include small{
+            width: 7%;
+            display: block;
+        }
+    }
+    &__svg{
+        width: 1rem;
+        height: 1rem;
+        
+    }
+    &__nav{
+        background-color: red;
+        width: 40%;
+
+        @include medium{
+            display:none;
+            width: 100%;
+            height: calc(100vh - 38.9104px);
+            &.active{
+                display:flex;
+            } 
+        }
+        @include small{
+            display:none;
+            width: 100%;
+            height: calc(100vh - 26.2608px);
+            &.active{
+                display:flex;
+            }
+        }
+    }
+    &__ul{
+        
+        @include flex(row, nowrap,space-between,center);
+        padding: .5rem 0 .5rem 0;
+        @include medium{
+            @include flex(column, nowrap, start, center);
+            width:100%;
+            margin-top: 1rem;
+            
+
+        }
+        @include small{
+            @include flex( column, nowrap, start, center);
+            width:100%;
+            margin-top: 1rem;
+        }
+                
+    }
+    &__li{
+        padding: .5rem;
+        @include small{
+            margin: 6px 0;
+        }
+    }
+    
+}
+.startpage{
+    width: 100%;
+    background-color: aquamarine;
+    
+
+    &__wrapper{
+        max-width: 1140px;
+        margin: auto;
+        background-color: aqua;
+        height: 100vh;
+        @include flex(row, nowrap, center, center)
+    }
+    &__col1{
+        width: 40%;
+        
+
+    }
+    &__info{
+        animation: appear 2s ease 1 both;
+    }
+    &__h1{
+        font-size: 1.625rem;
+    }
+    &__p{
+
+    }
+    &__div{
+        width: 100%;
+        height: 15vh;
+        background-color: red;
+        @include flex(row, nowrap, space-between, center)
+    }
+    &__botones{
+        width: 100%;     
+    }
+    &__btn{
+        background-color: orange;
+        padding: 1rem;
+        opacity:1;
+
+        animation: slideUp 2s ease 1 both;
+        &:nth-child(1){ animation-delay: 0s;}
+        &:nth-child(2){ animation-delay: .5s;}
+        &:nth-child(3){ animation-delay: 1s;}
+        &.active{
+            opacity:1;
+        }
+    }
+    &__a{
+
+    }
+    &__col2{
+        background-color: aquamarine;
+        width: 50%;
+    }
+    &__img{
+
+    }
+}
+
+@keyframes slideUp{
+    from{
+        transform: translateY(100%);
+        opacity:0;
+    }
+    to{
+        transform: translateY(0%);
+        opacity:1;
+    }
+}
+@keyframes appear {
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+
+//Gallery//
+
+.gallery{
+        
+    &__fullscreen{
+        // max-width: 1440px;
+        width: 100%;
+        @include flex(row, nowrap, center,center);
+        margin: auto;
+        overflow: hidden;
+        position:fixed;
+        top: 0;
+        left: 0;
+    }
+    &__column{
+        width: 50%;
+        // background-color: aquamarine;
+        overflow: hidden;
+        @include flex(column, nowrap, center,center);
+        
+        // .active{
+        //     animation: vanish 1s ease 1;
+        //     animation-delay: 1s;   
+        // }
+        
+        
+        &.first{
+            .active{
+                animation: moveleft 2s ease 1 both;
+                animation-delay: 1s;
+            }
+        }
+        &.second{
+            .active{
+                animation: moveright 2s ease 1 both;
+                animation-delay: 1s;
+            }
+
+        }
+
+    }
+    &__text{
+        width: 100%;
+        height: 50vh;
+        background-color: yellow;
+        
+        .gal{
+            display: flex;
+            justify-content: flex-end;
+        }
+        &.lery{
+        }
+        // .active{
+        //     height: 50vh;
+        // }
+
+    }
+    &__span{
+        font-size: 9.375rem;
+        height: 100%;
+        &.gal{
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            // transform:translateX(3.5%);
+            animation: fall 2s ease 1 both;
+
+        }
+        &.lery{
+            display: flex;
+            // transform:translateX(-3%);
+            animation: rise 2s ease 1 both;
+            // &.active{
+            //     align-items: flex-end;
+            // }
+        } 
+    }
+    &__image{
+        width: 100%;
+        height: 50vh;
+        background-color: orange;
+        opacity: 1;
+        transition: 1s ease;
+        &.active{
+        // height: 30vh;
+        opacity: 0;
+           
+        }
+         
+    }
+    &__img{
+
+    }
+}
+@keyframes vanish{
+    from{
+        opacity:1;
+    }
+    to{
+        opacity:0;
+    }
+}
+@keyframes fall{
+    from{
+        transform:translateY(-100%);
+        opacity: 0;
+    }
+    to{
+        transform:translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes rise{
+    from{
+        transform:translateY(100%);
+        opacity: 0;
+    }
+    to{
+        transform:translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes moveleft{
+    0%{
+        transform:translateY(0%);
+        
+    }
+    50%{
+        transform:translateY(47%) translateX(0%);
+        opacity:1
+    }
+    100%{
+        transform: translateY(50%) translateX(-100%);
+        opacity:0;
+    }
+}
+@keyframes moveright{
+    0%{
+        transform:translateY(0);
+        
+    }
+    50%{
+        transform: translateY(-3%) translateX(0%);
+        opacity: 1;
+
+    }
+    100%{
+        transform: translateX(100%);
+        opacity:0;
+    }
+}
+
+//Galeria//
+
+.elements{
+    &__wrapper{
+        max-width: 1440px;
+        background-color: aquamarine;
+        @include flex(row, nowrap, center, center);
+        gap: 3.125rem;
+        margin: auto;
+    }
+    &__col{
+        width: 33%;
+        @include flex(column, nowrap,center, center)
+
+    }
+    &__a{
+
+    }
+    &__img{
+        background-color: orange;
+        width: 100%;
+        height: 6.25rem;
+
+    }
+    &__hover{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+    }
+
+
+}
+.graficdesign{
+    &__wrapper{
+        max-width: 1440px;
+        margin: auto;
+        background-color: aquamarine;
+        @include flex (column, nowrap, center, center)
+    }
+    &__div{
+        background-color: yellowgreen;
+        @include flex (row, nowrap, center, center)
+
+    }
+    &__h2{
+        font-size: 30px;
+        margin: 16px;
+    }
+    &__work{
+        @include flex(column, nowrap, center, center);
+        background-color: olive;
+    }
+    &__col50{
+        width: 50%;
+    }
+    &__btn{
+        padding: 14px 16px;
+        background-color: red;
+    }
+
+}
+
+.grdgallery{
+    &__h3{
+        font-size: 30px;
+        margin: 6.25rem 0 1.5625rem 0;
+        
+    }
+    &__wrapper{
+        max-width: 1440px;
+        margin:auto;
+        background-color: aquamarine;
+        @include flex(column, nowrap, center, center)
+    }
+    &__photos{
+        @include flex (row, nowrap, space-between,center);
+        gap: 2rem;
+
+    }
+    &__img{
+        width: 100%;
+        transition: all 0.5s ease;
+        &:hover{
+            transform: scale(0.7);
+        }
+        &:active{
+            transform: scale(1.1);
+        }
+    }
+    &__lightbox{
+        width: 100%;
+        height: 100%;
+        background-color: lightgray;
+        position: fixed;
+        top: 0;
+        left: 0;
+        @include flex(column, nowrap, center, center);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 2s ease;
+        &.active{
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+
+    }
+    &__btn{
+        // width: 50%;
+        display: flex;
+        margin-bottom: 1rem;
+        justify-self: flex-end;
+    }
+    &__svg{
+        width: 40%;
+        height: 40%
+
+    }
+}
+
+.uxui{
+    @include flex( column, nowrap, center, center);
+    &__h3{
+        font-size: 30px;
+        margin: 6.25rem 0 1.5625rem 0;
+    }
+    &__wrapper{
+        max-width: 90rem;
+        @include flex (row, nowrap, center, center);
+    }
+    &__col{
+        background-color: aquamarine;
+        &.una{
+            width: 40%;
+        }
+    }
+    &__p{
+
+    }
+    &__img{
+        width: 100%;
+
+    }
+}
+.web{
+    @include flex( column, nowrap, center, center);
+    &__h3{
+        font-size: 30px;
+        margin: 6.25rem 0 1.5625rem 0;
+    }
+    &__wrapper{
+        max-width: 90rem;
+        @include flex (row, nowrap, center, center);
+    }
+    &__col{
+        background-color: aquamarine;
+        &.una{
+            width: 40%;
+        }
+    }
+    &__p{
+
+    }
+    &__img{
+        width: 100%;
+
+    }
+
+}
+
+
+

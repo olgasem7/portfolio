@@ -1,0 +1,608 @@
+@charset "UTF-8";
+/* Si quieres usar tu reset, borra esta línea */ /* Definimos las Custom properties */
+:root {
+  /* Colores */
+  --negro: #393939;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+
+/* (Opcional) Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --negro: #ececec;
+  }
+}
+/* (Opcional) Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+*::before, *::after {
+  display: block;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* (Opcional) */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* (Opcional) */
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* (Opcional) Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* (Opcional) Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* (Opcional) */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--negro);
+  /* (Opcional) */
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  /* (Opcional) */
+  font-smooth: always;
+  /* (Opcional) */
+  -webkit-font-smoothing: antialiased;
+  /* (Opcional) */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100vh;
+}
+
+.Header {
+  background-color: green;
+}
+.Header__logo {
+  background-color: aquamarine;
+  width: 20%;
+}
+.Header__wrapper {
+  background-color: orange;
+  max-width: 1440px;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.Header__icono {
+  width: 5%;
+  background-color: aqua;
+  display: none;
+}
+@media only screen and (max-width: 1024px) {
+  .Header__icono {
+    display: block;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Header__icono {
+    width: 7%;
+    display: block;
+  }
+}
+.Header__svg {
+  width: 1rem;
+  height: 1rem;
+}
+.Header__nav {
+  background-color: red;
+  width: 40%;
+}
+@media only screen and (max-width: 1024px) {
+  .Header__nav {
+    display: none;
+    width: 100%;
+    height: calc(100vh - 38.9104px);
+  }
+  .Header__nav.active {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Header__nav {
+    display: none;
+    width: 100%;
+    height: calc(100vh - 26.2608px);
+  }
+  .Header__nav.active {
+    display: flex;
+  }
+}
+.Header__ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem 0;
+}
+@media only screen and (max-width: 1024px) {
+  .Header__ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Header__ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+.Header__li {
+  padding: 0.5rem;
+}
+@media only screen and (max-width: 600px) {
+  .Header__li {
+    margin: 6px 0;
+  }
+}
+
+.startpage {
+  width: 100%;
+  background-color: aquamarine;
+}
+.startpage__wrapper {
+  max-width: 1140px;
+  margin: auto;
+  background-color: aqua;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.startpage__col1 {
+  width: 40%;
+}
+.startpage__info {
+  animation: appear 2s ease 1 both;
+}
+.startpage__h1 {
+  font-size: 1.625rem;
+}
+.startpage__div {
+  width: 100%;
+  height: 15vh;
+  background-color: red;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.startpage__botones {
+  width: 100%;
+}
+.startpage__btn {
+  background-color: orange;
+  padding: 1rem;
+  opacity: 1;
+  animation: slideUp 2s ease 1 both;
+}
+.startpage__btn:nth-child(1) {
+  animation-delay: 0s;
+}
+.startpage__btn:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.startpage__btn:nth-child(3) {
+  animation-delay: 1s;
+}
+.startpage__btn.active {
+  opacity: 1;
+}
+.startpage__col2 {
+  background-color: aquamarine;
+  width: 50%;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.gallery__fullscreen {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.gallery__column {
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.gallery__column.first .active {
+  animation: moveleft 2s ease 1 both;
+  animation-delay: 1s;
+}
+.gallery__column.second .active {
+  animation: moveright 2s ease 1 both;
+  animation-delay: 1s;
+}
+.gallery__text {
+  width: 100%;
+  height: 50vh;
+  background-color: yellow;
+}
+.gallery__text .gal {
+  display: flex;
+  justify-content: flex-end;
+}
+.gallery__span {
+  font-size: 9.375rem;
+  height: 100%;
+}
+.gallery__span.gal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  animation: fall 2s ease 1 both;
+}
+.gallery__span.lery {
+  display: flex;
+  animation: rise 2s ease 1 both;
+}
+.gallery__image {
+  width: 100%;
+  height: 50vh;
+  background-color: orange;
+  opacity: 1;
+  transition: 1s ease;
+}
+.gallery__image.active {
+  opacity: 0;
+}
+@keyframes vanish {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fall {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes moveleft {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(47%) translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50%) translateX(-100%);
+    opacity: 0;
+  }
+}
+@keyframes moveright {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3%) translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+.elements__wrapper {
+  max-width: 1440px;
+  background-color: aquamarine;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3.125rem;
+  margin: auto;
+}
+.elements__col {
+  width: 33%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.elements__img {
+  background-color: orange;
+  width: 100%;
+  height: 6.25rem;
+}
+.elements__hover {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.graficdesign__wrapper {
+  max-width: 1440px;
+  margin: auto;
+  background-color: aquamarine;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.graficdesign__div {
+  background-color: yellowgreen;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.graficdesign__h2 {
+  font-size: 30px;
+  margin: 16px;
+}
+.graficdesign__work {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: olive;
+}
+.graficdesign__col50 {
+  width: 50%;
+}
+.graficdesign__btn {
+  padding: 14px 16px;
+  background-color: red;
+}
+
+.grdgallery__h3 {
+  font-size: 30px;
+  margin: 6.25rem 0 1.5625rem 0;
+}
+.grdgallery__wrapper {
+  max-width: 1440px;
+  margin: auto;
+  background-color: aquamarine;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.grdgallery__photos {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.grdgallery__img {
+  width: 100%;
+  transition: all 0.5s ease;
+}
+.grdgallery__img:hover {
+  transform: scale(0.7);
+}
+.grdgallery__img:active {
+  transform: scale(1.1);
+}
+.grdgallery__lightbox {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 2s ease;
+}
+.grdgallery__lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.grdgallery__btn {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-self: flex-end;
+}
+.grdgallery__svg {
+  width: 40%;
+  height: 40%;
+}
+
+.uxui {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.uxui__h3 {
+  font-size: 30px;
+  margin: 6.25rem 0 1.5625rem 0;
+}
+.uxui__wrapper {
+  max-width: 90rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.uxui__col {
+  background-color: aquamarine;
+}
+.uxui__col.una {
+  width: 40%;
+}
+.uxui__img {
+  width: 100%;
+}
+
+.web {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.web__h3 {
+  font-size: 30px;
+  margin: 6.25rem 0 1.5625rem 0;
+}
+.web__wrapper {
+  max-width: 90rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.web__col {
+  background-color: aquamarine;
+}
+.web__col.una {
+  width: 40%;
+}
+.web__img {
+  width: 100%;
+}/*# sourceMappingURL=index.css.map */
